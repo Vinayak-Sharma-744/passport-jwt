@@ -4,6 +4,7 @@ import signupDb from "../controllers/signupDb"
 import loginDb from "../controllers/LoginDB"
 import loginAuth from "../auth/login"
 import passportValidation from "../lib"
+import updateDb from "../controllers/updateDB"
 import passport from "passport"
 import userPassportValidation from "../lib/passport/index"
 // import passportValidation from "../lib"
@@ -17,6 +18,8 @@ app.use(express.json())
 router.get("/login",passportValidation,loginAuth,loginDb)
 
 router.post("/register",signupAuth, signupDb)
+
+router.put("/edit", passportValidation, updateDb )
 
 export default router
 

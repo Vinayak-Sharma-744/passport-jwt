@@ -18,4 +18,21 @@ const login = async (id: any) => {
   }
 };
 
-export{userSigup, login}
+const update = async(obj: any, firstName:string, lastName:string)=>{
+  const updatee = {
+    fname: firstName,
+    lname: lastName
+  };
+  const options = {
+    new: true, // Return the updated document
+    runValidators: true // Validate the update
+  };
+  try {
+    const result = await UserModel.findOneAndUpdate({email:obj}, updatee, options)
+    return result
+  }catch(error){
+    console.log(error);
+  }
+}
+
+export{userSigup, login, update}
