@@ -13,3 +13,4 @@ export const connect = async (MONGO_URL: string) => {
     process.exit(1)
   }
 }
+

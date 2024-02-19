@@ -8,9 +8,9 @@ const userSigup = async (obj: any) => {
   }
 };
 
-const login = async (id: any) => {
+const login = async (email: string) => {
   try {
-    const result = await UserModel.findOne(id);
+    const result = await UserModel.findOne({email:email});
     return result;
     //   console.log(result);
   } catch (error) {
@@ -18,7 +18,7 @@ const login = async (id: any) => {
   }
 };
 
-const update = async(obj: any, firstName:string, lastName:string)=>{
+const update = async(email: string, firstName:string, lastName:string)=>{
   const updatee = {
     fname: firstName,
     lname: lastName
@@ -28,11 +28,21 @@ const update = async(obj: any, firstName:string, lastName:string)=>{
     runValidators: true // Validate the update
   };
   try {
-    const result = await UserModel.findOneAndUpdate({email:obj}, updatee, options)
+    const result = await UserModel.findOneAndUpdate({email:email}, updatee, options)
     return result
   }catch(error){
     console.log(error);
   }
 }
 
-export{userSigup, login, update}
+const find = async (obj:object) => {
+  try {
+    const result = await UserModel.findOne(obj);
+    return result;
+    //   console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export{userSigup, login, update, find}

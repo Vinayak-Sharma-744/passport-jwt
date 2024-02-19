@@ -1,4 +1,4 @@
-import userPassportValidation from "./passport";
+import {userPassportValidation} from "./passport";
 
  const passportValidation = userPassportValidation.authenticate('jwt', {session:false})
 

@@ -18,9 +18,7 @@ app.use(router)
 const serverConnect = async()=>{
     try {
         await connect(process.env.MONGO_URL as string)
-        app.listen(port, ()=>{
-            console.log("listening on port: ", port )
-        })
+        app.listen(port, ()=>{console.log("listening on port: ", port )})
     } catch (error) {
         console.log(`error connecting to server: ${error}`)
     }
